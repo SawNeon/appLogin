@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="appLogin.loginPage"
-             Title="loginPage">
+<ContentPage
+    x:Class="appLogin.loginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="loginPage">
 
     <AbsoluteLayout BackgroundColor="grey">
         <ScrollView>
             <VerticalStackLayout Padding="2">
 
-                <Label 
+                <Label
                     Margin="0,104,0,0"
-                    Text="Login"
                     FontSize="36"
-                    VerticalOptions="Fill"
-                    HorizontalOptions="CenterAndExpand" />
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Login"
+                    VerticalOptions="Fill" />
 
                 <Frame
-                    CornerRadius="5"
-                    HasShadow="True"
-                    BorderColor="Gray"
+                    Margin="5,100,5,10"
                     Padding="0"
-                    Margin="5,100,5,10">
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="True">
 
                     <Entry
+                        HeightRequest="52"
+                        HorizontalOptions="Center"
                         Placeholder="Email adress"
                         VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" 
-                        HeightRequest="52"
-                        WidthRequest="343"/>
+                        WidthRequest="343" />
 
-                    
+
                 </Frame>
                 <Frame
-                    CornerRadius="5"
-                    HasShadow="True"
-                    BorderColor="Gray"
+                    Margin="5"
                     Padding="0"
-                    Margin="5">
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="True">
 
                     <Entry
+                        HeightRequest="52"
+                        HorizontalOptions="Center"
                         Placeholder="Senha"
                         VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" 
-                        HeightRequest="52"
-                        WidthRequest="343"/>
+                        WidthRequest="343" />
                 </Frame>
 
                 <Button
                     x:Name="LoginL"
-                    Text="Log in"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand"
                     Margin="2,16"
-                    Clicked="OnNavigateGoRegisterPage"
                     HeightRequest="52"
-                    WidthRequest="343"
-                    />
+                    HorizontalOptions="FillAndExpand"
+                    Text="Log in"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343" />
             </VerticalStackLayout>
         </ScrollView>
-        
 
-        <ImageButton 
+
+        <ImageButton
+            AbsoluteLayout.LayoutBounds="16, 60, 15, 15"
+            AbsoluteLayout.LayoutFlags="None"
             Clicked="OnNavegationGoBack"
-            Source="goback.svg"
             HeightRequest="15"
-            WidthRequest="15"
-            VerticalOptions="Start"
             HorizontalOptions="Start"
-            AbsoluteLayout.LayoutBounds="16, 60, 15, 15" 
-            AbsoluteLayout.LayoutFlags="None" />
+            Source="goback.svg"
+            VerticalOptions="Start"
+            WidthRequest="15" />
     </AbsoluteLayout>
 </ContentPage>

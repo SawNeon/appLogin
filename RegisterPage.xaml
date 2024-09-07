@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appLogin.RegisterPage"
              Title="RegisterPage">
-    
+
     <AbsoluteLayout BackgroundColor="grey">
         <ScrollView>
             <VerticalStackLayout Padding="2">
-
                 <Label 
                     Margin="0,104,0,0"
                     Text="Registrar"
@@ -23,14 +22,14 @@
                     Margin="5,15,5,5">
 
                     <Entry
-                        Placeholder="Email adress"
+                        x:Name="emailEntry"
+                        Placeholder="Email address"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" 
                         HeightRequest="52"
                         WidthRequest="343"/>
-
-
                 </Frame>
+
                 <Frame
                     CornerRadius="5"
                     HasShadow="True"
@@ -39,11 +38,13 @@
                     Margin="5">
 
                     <Entry
+                        x:Name="senhaEntry"
                         Placeholder="Senha"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" 
                         HeightRequest="52"
-                        WidthRequest="343"/>
+                        WidthRequest="343"
+                        IsPassword="True"/>
                 </Frame>
 
                 <Frame
@@ -54,11 +55,13 @@
                     Margin="5">
 
                     <Entry
-                    Placeholder="Confimar Senha"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center" 
-                    HeightRequest="52"
-                    WidthRequest="343"/>
+                        x:Name="confirmarSenhaEntry"
+                        Placeholder="Confirmar Senha"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center" 
+                        HeightRequest="52"
+                        WidthRequest="343"
+                        IsPassword="True"/>
                 </Frame>
 
                 <Button
@@ -67,13 +70,11 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"
                     Margin="2,32"
-                    Clicked="OnNavigateGoRegisterPage"
                     HeightRequest="52"
                     WidthRequest="343"
-                    />
+                    Clicked="OnAdicionarClicked"/>
             </VerticalStackLayout>
         </ScrollView>
-
 
         <ImageButton 
             Clicked="OnNavegationGoBack"
