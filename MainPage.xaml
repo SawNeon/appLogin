@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appLogin.MainPage">
+             
+    <ScrollView BackgroundColor="grey">
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Margin="70"
+                Source="iconLogin.svg"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                
+                <Button 
+                    x:Name="Login"
+                    Text="Login"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="2,5"/>
+                <Button
+                    x:Name="Registra"
+                    Text="Registra"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="2,5"/>
+            </StackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
