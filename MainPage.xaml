@@ -5,7 +5,7 @@
              
     <ScrollView BackgroundColor="grey">
         <VerticalStackLayout
-            Padding="30,0"
+            Padding="2,0"
             Spacing="25">
             <Image
                 Margin="70"
@@ -23,13 +23,18 @@
                     SemanticProperties.Hint="Counts the number of times you click"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"
-                    Margin="2,5"/>
+                    Margin="2,5"
+                    Clicked="OnNavigateGoLoginPage"
+                    />
+                
                 <Button
                     x:Name="Registra"
-                    Text="Registra"
+                    Text="Registrar"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"
-                    Margin="2,5"/>
+                    Margin="2,5"
+                    Clicked="OnNavigateGoRegisterPage"
+                    />
             </StackLayout>
             
         </VerticalStackLayout>

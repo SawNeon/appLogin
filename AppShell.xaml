@@ -12,4 +12,14 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+        Title="Login Page"
+        ContentTemplate="{DataTemplate local:loginPage}"
+        Route="loginPage" />
+
+    <ShellContent
+        Title="Register Page"
+        ContentTemplate="{DataTemplate local:RegisterPage}"
+        Route="RegisterPage" />
+
 </Shell>

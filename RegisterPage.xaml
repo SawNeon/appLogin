@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appLogin.RegisterPage"
+             Title="RegisterPage">
+    
+    <AbsoluteLayout BackgroundColor="grey">
+        <ScrollView>
+            <VerticalStackLayout Padding="2">
+
+                <Label 
+                    Margin="0,104,0,0"
+                    Text="Registrar"
+                    FontSize="36"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="CenterAndExpand" />
+
+                <Frame
+                    CornerRadius="5"
+                    HasShadow="True"
+                    BorderColor="Gray"
+                    Padding="0"
+                    Margin="5,15,5,5">
+
+                    <Entry
+                        Placeholder="Email adress"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center" 
+                        HeightRequest="52"
+                        WidthRequest="343"/>
+
+
+                </Frame>
+                <Frame
+                    CornerRadius="5"
+                    HasShadow="True"
+                    BorderColor="Gray"
+                    Padding="0"
+                    Margin="5">
+
+                    <Entry
+                        Placeholder="Senha"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center" 
+                        HeightRequest="52"
+                        WidthRequest="343"/>
+                </Frame>
+
+                <Frame
+                    CornerRadius="5"
+                    HasShadow="True"
+                    BorderColor="Gray"
+                    Padding="0"
+                    Margin="5">
+
+                    <Entry
+                    Placeholder="Confimar Senha"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center" 
+                    HeightRequest="52"
+                    WidthRequest="343"/>
+                </Frame>
+
+                <Button
+                    x:Name="Registrar"
+                    Text="Registrar"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="2,32"
+                    Clicked="OnNavigateGoRegisterPage"
+                    HeightRequest="52"
+                    WidthRequest="343"
+                    />
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+        <ImageButton 
+            Clicked="OnNavegationGoBack"
+            Source="goback.svg"
+            HeightRequest="15"
+            WidthRequest="15"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            AbsoluteLayout.LayoutBounds="16, 60, 15, 15" 
+            AbsoluteLayout.LayoutFlags="None" />
+    </AbsoluteLayout>
+</ContentPage>
