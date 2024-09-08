@@ -62,7 +62,7 @@
         <ImageButton
             AbsoluteLayout.LayoutBounds="16, 60, 15, 15"
             AbsoluteLayout.LayoutFlags="None"
-            Clicked="OnNavegationGoBack"
+            
             HeightRequest="15"
             HorizontalOptions="Start"
             Source="goback.svg"

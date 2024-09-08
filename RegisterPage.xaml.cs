@@ -25,28 +25,38 @@ namespace appLogin
 
         private async void OnAdicionarClicked(object sender, EventArgs e)
         {
-            string email = emailEntry.Text; // Presumo que aqui você quer o nome do usuário
-            int idade;
+            string email = emailEntry.Text; // Pega o email do campo de entrada
+            string senha = senhaEntry.Text; // Pega a senha do campo de entrada
 
-            if (!int.TryParse(senhaEntry.Text, out idade))
+            // Verifica se os campos estão preenchidos
+            if (string.IsNullOrWhiteSpace(email))
             {
-                await DisplayAlert("Erro", "Idade deve ser um número válido.", "OK");
+                await DisplayAlert("Erro", "O email não pode estar vazio.", "OK");
                 return;
             }
 
-            // Verifica se já existe um registro com o mesmo nome
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                await DisplayAlert("Erro", "A senha não pode estar vazia.", "OK");
+                return;
+            }
+
+            // Verifica se já existe um registro com o mesmo email
             var dadosExistentes = await _databaseService.ObterDadosPorEmailAsync(email);
 
-            if (dadosExistentes.Any())
+            // Protege contra o retorno nulo
+            if (dadosExistentes != null && dadosExistentes.Any())
             {
                 await DisplayAlert("Erro", "Já existe um registro com esse email.", "OK");
                 return;
             }
 
-            var novoDado = new Tabela { Email = email, Senha = idade.ToString() }; // Corrigido aqui
+            // Cria o novo registro
+            var novoDado = new Tabela { Email = email, Senha = senha }; // Usa 'senha' corretamente
             await _databaseService.InserirDadoAsync(novoDado);
             await DisplayAlert("Sucesso", "Dado inserido com sucesso!", "OK");
 
+            // Limpa os campos de entrada
             emailEntry.Text = string.Empty;
             senhaEntry.Text = string.Empty;
             confirmarSenhaEntry.Text = string.Empty; // Limpando o campo de confirmação de senha

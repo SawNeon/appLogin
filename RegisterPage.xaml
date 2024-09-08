@@ -23,11 +23,13 @@
 
                     <Entry
                         x:Name="emailEntry"
-                        Placeholder="Email address"
+                        Placeholder="Email adress"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" 
                         HeightRequest="52"
-                        WidthRequest="343"/>
+                        WidthRequest="343"
+                        Text="{Binding Email}" />
+                    <!-- Binding ao campo 'Email' -->
                 </Frame>
 
                 <Frame
@@ -36,7 +38,6 @@
                     BorderColor="Gray"
                     Padding="0"
                     Margin="5">
-
                     <Entry
                         x:Name="senhaEntry"
                         Placeholder="Senha"
@@ -44,7 +45,9 @@
                         HorizontalOptions="Center" 
                         HeightRequest="52"
                         WidthRequest="343"
-                        IsPassword="True"/>
+                        IsPassword="True"
+                        Text="{Binding Senha}" />
+                    <!-- Binding ao campo 'Senha' -->
                 </Frame>
 
                 <Frame
@@ -53,15 +56,15 @@
                     BorderColor="Gray"
                     Padding="0"
                     Margin="5">
-
                     <Entry
-                        x:Name="confirmarSenhaEntry"
+                        x:Name="confirmarSenhaEntry" 
                         Placeholder="Confirmar Senha"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" 
                         HeightRequest="52"
                         WidthRequest="343"
                         IsPassword="True"/>
+                    
                 </Frame>
 
                 <Button
@@ -77,7 +80,7 @@
         </ScrollView>
 
         <ImageButton 
-            Clicked="OnNavegationGoBack"
+            
             Source="goback.svg"
             HeightRequest="15"
             WidthRequest="15"
