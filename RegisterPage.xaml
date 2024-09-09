@@ -80,7 +80,7 @@
         </ScrollView>
 
         <ImageButton 
-            
+            Clicked="OnNavegationGoBack"
             Source="goback.svg"
             HeightRequest="15"
             WidthRequest="15"
