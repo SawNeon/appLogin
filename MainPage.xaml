@@ -7,7 +7,7 @@
     <ScrollView BackgroundColor="grey">
         <VerticalStackLayout Padding="2,0" Spacing="25">
             <Image
-                Margin="70"
+                Margin="0,70"
                 Aspect="AspectFit"
                 HeightRequest="185"
                 SemanticProperties.Description="dot net bot in a race car number eight"

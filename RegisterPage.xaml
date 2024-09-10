@@ -8,7 +8,7 @@
         <ScrollView>
             <VerticalStackLayout Padding="2">
                 <Label 
-                    Margin="0,104,0,0"
+                    Margin="0,104,180,0"
                     Text="Registrar"
                     FontSize="36"
                     VerticalOptions="Fill"

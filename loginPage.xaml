@@ -10,7 +10,7 @@
             <VerticalStackLayout Padding="2">
 
                 <Label
-                    Margin="0,104,0,0"
+                    Margin="0,104,180,0"
                     FontSize="36"
                     HorizontalOptions="CenterAndExpand"
                     Text="Login"

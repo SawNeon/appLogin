@@ -5,7 +5,7 @@
              Title="HomePage">
     <VerticalStackLayout BackgroundColor="grey">
         <Label 
-             Margin="0,104,0,0"
+             Margin="0,50,180,30"
              Text="Procurar"
              FontSize="36"
              VerticalOptions="Fill"
