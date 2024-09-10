@@ -52,5 +52,12 @@ namespace appLogin
                                   .Where(t => t.Email == email)
                                   .ToListAsync();
         }
+        public async Task<bool> LoginAsync(string email, string senha)
+        {
+        
+            var user = await _database.Table<Tabela>().Where(t => t.Email == email && t.Senha == senha).FirstOrDefaultAsync();
+
+            return user != null;
+        }
     }
 }

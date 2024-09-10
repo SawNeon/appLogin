@@ -7,8 +7,10 @@
     Title="appLogin"
     Shell.FlyoutBehavior="Disabled">
 
+    <!-- Definição das rotas para as páginas -->
     <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
     <ShellContent ContentTemplate="{DataTemplate local:loginPage}" Route="loginPage" />
     <ShellContent ContentTemplate="{DataTemplate local:RegisterPage}" Route="RegisterPage" />
+    <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
 
 </Shell>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appLogin.HomePage"
+             Title="HomePage">
+    <VerticalStackLayout BackgroundColor="grey">
+        <Label 
+             Margin="0,104,0,0"
+             Text="Procurar"
+             FontSize="36"
+             VerticalOptions="Fill"
+             HorizontalOptions="CenterAndExpand" />
+
+        <Frame
+            Margin="5"
+            Padding="0"
+            BorderColor="Gray"
+            CornerRadius="5"
+            HasShadow="True"
+            VerticalOptions="Center">
+            <HorizontalStackLayout>
+
+                <ImageButton
+                    Margin="5"
+                    Source="search.svg"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="OnSearchClicked" />
+                
+                <Entry x:Name="search"
+                    HeightRequest="52"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Pesquisar"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="300" />
+
+               
+            </HorizontalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

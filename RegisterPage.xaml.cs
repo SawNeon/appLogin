@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
@@ -25,8 +26,9 @@ namespace appLogin
 
         private async void OnAdicionarClicked(object sender, EventArgs e)
         {
-            string email = emailEntry.Text; // Pega o email do campo de entrada
-            string senha = senhaEntry.Text; // Pega a senha do campo de entrada
+            string email = emailEntry.Text;
+            string senha = senhaEntry.Text; 
+            string confirmarSenha = confirmarSenhaEntry.Text; 
 
             // Verifica se os campos estão preenchidos
             if (string.IsNullOrWhiteSpace(email))
@@ -35,9 +37,21 @@ namespace appLogin
                 return;
             }
 
+            if (!IsValidEmail(email))
+            {
+                await DisplayAlert("Erro", "O email fornecido não é válido.", "OK");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(senha))
             {
                 await DisplayAlert("Erro", "A senha não pode estar vazia.", "OK");
+                return;
+            }
+
+            if (senha != confirmarSenha)
+            {
+                await DisplayAlert("Erro", "As senhas não coincidem.", "OK");
                 return;
             }
 
@@ -62,10 +76,19 @@ namespace appLogin
             confirmarSenhaEntry.Text = string.Empty; // Limpando o campo de confirmação de senha
         }
 
+        private bool IsValidEmail(string email)
+        {
+            // Expressão regular para validar o formato do email
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailPattern);
+        }
+    
+
         private async void OnNavegationGoBack(object sender, EventArgs e)
         {
-            // Navega para a Login Page
-            await Shell.Current.GoToAsync("///MainPage");
+                // Navega para a Login Page
+                await Shell.Current.GoToAsync("///MainPage");
         }
     }
 }
+

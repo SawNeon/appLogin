@@ -71,6 +71,7 @@
 	  <None Remove="Resources\Fonts\Roboto.ttf" />
 	  <None Remove="Resources\Images\goback.svg" />
 	  <None Remove="Resources\Images\iconLogin.svg" />
+	  <None Remove="Resources\Images\search.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,6 +84,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="loginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
