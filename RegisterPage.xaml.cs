@@ -55,6 +55,12 @@ namespace appLogin
                 return;
             }
 
+            if(senha.Length < 12)
+            {
+                await DisplayAlert("Erro", "Sua senha deve conter no mínimo 12 caracteres", "OK");
+                return;
+            }
+
             // Verifica se já existe um registro com o mesmo email
             var dadosExistentes = await _databaseService.ObterDadosPorEmailAsync(email);
 
