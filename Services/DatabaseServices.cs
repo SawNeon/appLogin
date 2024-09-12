@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLite;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -57,8 +58,33 @@ namespace appLogin
 
         public async Task<bool> LoginAsync(string email, string senha)
         {
-            var user = await _database.Table<Tabela>().Where(t => t.Email == email && t.Senha == senha).FirstOrDefaultAsync();
+            var user = await _database.Table<Tabela>()
+                                      .Where(t => t.Email == email && t.Senha == senha)
+                                      .FirstOrDefaultAsync();
             return user != null;
+        }
+
+        public async Task<bool> AtualizarSenhaAsync(string email, string novaSenha)
+        {
+            var user = await _database.Table<Tabela>()
+                                      .Where(t => t.Email == email)
+                                      .FirstOrDefaultAsync();
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.Senha = novaSenha;
+            await _database.UpdateAsync(user);
+            return true;
+        }
+
+        public async Task<IEnumerable<Tabela>> ObterDadosPorEmailRecuperarAsync(string email)
+        {
+            return await _database.Table<Tabela>()
+                                  .Where(t => t.Email == email)
+                                  .ToListAsync();
         }
     }
 }
+

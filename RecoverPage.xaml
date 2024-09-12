@@ -1,77 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="appLogin.loginPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="">
-
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appLogin.RecoverPage"
+             Title="">
     <AbsoluteLayout BackgroundColor="grey">
         <ScrollView>
             <VerticalStackLayout Padding="2">
 
                 <Label
-                    Margin="0,104,240,0"
+                    Margin="0,104,150,0"
                     FontSize="36"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Login"
+                    Text="Recuperar"
                     VerticalOptions="Fill" />
 
                 <Frame
-                    Margin="5,100,5,10"
+                    Margin="5,100,5,0"
                     Padding="0"
                     BorderColor="Gray"
                     CornerRadius="5"
                     HasShadow="True">
 
-                    <Entry x:Name="emailEntry"
+                    <Entry x:Name="emailRecover"
                         HeightRequest="52"
                         HorizontalOptions="Center"
                         Placeholder="Email adress"
                         VerticalOptions="CenterAndExpand"
                         WidthRequest="343"
                         Text="{Binding Email}"/>
-
-
                 </Frame>
+
                 <Frame
-                    Margin="5"
+                    Margin="5,15,5,5"
                     Padding="0"
                     BorderColor="Gray"
                     CornerRadius="5"
                     HasShadow="True">
 
-                    <Entry x:Name="senhaEntry"
-                        HeightRequest="52"
-                        HorizontalOptions="Center"
-                        Placeholder="Senha"
-                        VerticalOptions="CenterAndExpand"
-                        WidthRequest="343"
-                        IsPassword="True"
-                        Text="{Binding Senha}"/>
+                    <Entry
+                    x:Name="NewPasswordEntry"
+                    HeightRequest="52"
+                    HorizontalOptions="Center"
+                    Placeholder="Nova senha"
+                    Text="{Binding Senha}"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343"
+                    IsPassword="true"
+                    />
                 </Frame>
 
                 <Button
-                    x:Name="LoginL"
+                    x:Name="NewPassword"
                     Margin="2,16"
                     HeightRequest="52"
                     HorizontalOptions="FillAndExpand"
-                    Clicked="OnLoginClicked"
-                    Text="Log in"
+                    Clicked="OnNewPassword"
+                    Text="Nova senha"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="343" />
 
-                <Label
-                    x:Name="RecoverSenhaLabel"
-                    Margin="185,16,0,0"
-                    HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
-                    Text="Recuperar senha"
-                    TextColor="White"
-                    FontSize="16">  
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRecuperarSenhaPage"/>
-                    </Label.GestureRecognizers>
-                </Label>
             </VerticalStackLayout>
         </ScrollView>
 

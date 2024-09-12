@@ -46,7 +46,13 @@ namespace appLogin
             }
         }
 
-        private async void OnNavegationGoBack(object sender, EventArgs e)
+        private async void OnRecuperarSenhaPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("///RecoverPage");
+
+        }
+
+            private async void OnNavegationGoBack(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("///MainPage");
         }
