@@ -1,92 +1,93 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="appLogin.RegisterPage"
-             Title="">
+<ContentPage
+    x:Class="appLogin.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="">
 
     <AbsoluteLayout BackgroundColor="grey">
         <ScrollView>
             <VerticalStackLayout Padding="2">
-                <Label 
+                <Label
                     Margin="0,104,180,0"
-                    Text="Registrar"
                     FontSize="36"
-                    VerticalOptions="Fill"
-                    HorizontalOptions="CenterAndExpand" />
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Registrar"
+                    VerticalOptions="Fill" />
 
                 <Frame
-                    CornerRadius="5"
-                    HasShadow="True"
-                    BorderColor="Gray"
+                    Margin="5,15,5,5"
                     Padding="0"
-                    Margin="5,15,5,5">
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="True">
 
                     <Entry
                         x:Name="emailEntry"
-                        Placeholder="Email adress"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" 
                         HeightRequest="52"
-                        WidthRequest="343"
-                        Text="{Binding Email}" />
-                    <!-- Binding ao campo 'Email' -->
+                        HorizontalOptions="Center"
+                        Placeholder="Email adress"
+                        Text="{Binding Email}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="343" />
+                    <!--  Binding ao campo 'Email'  -->
                 </Frame>
 
                 <Frame
-                    CornerRadius="5"
-                    HasShadow="True"
-                    BorderColor="Gray"
+                    Margin="5"
                     Padding="0"
-                    Margin="5">
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="True">
                     <Entry
                         x:Name="senhaEntry"
-                        Placeholder="Senha"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" 
                         HeightRequest="52"
-                        WidthRequest="343"
+                        HorizontalOptions="Center"
                         IsPassword="True"
-                        Text="{Binding Senha}" />
-                    <!-- Binding ao campo 'Senha' -->
+                        Placeholder="Senha"
+                        Text="{Binding Senha}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="343" />
+                    <!--  Binding ao campo 'Senha'  -->
                 </Frame>
 
                 <Frame
-                    CornerRadius="5"
-                    HasShadow="True"
-                    BorderColor="Gray"
+                    Margin="5"
                     Padding="0"
-                    Margin="5">
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="True">
                     <Entry
-                        x:Name="confirmarSenhaEntry" 
+                        x:Name="confirmarSenhaEntry"
+                        HeightRequest="52"
+                        HorizontalOptions="Center"
+                        IsPassword="True"
                         Placeholder="Confirmar Senha"
                         VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" 
-                        HeightRequest="52"
-                        WidthRequest="343"
-                        IsPassword="True"/>
-                    
+                        WidthRequest="343" />
+
                 </Frame>
 
                 <Button
                     x:Name="Registrar"
-                    Text="Registrar"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand"
                     Margin="2,32"
+                    Clicked="OnAdicionarClicked"
                     HeightRequest="52"
-                    WidthRequest="343"
-                    Clicked="OnAdicionarClicked"/>
+                    HorizontalOptions="FillAndExpand"
+                    Text="Registrar"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343" />
             </VerticalStackLayout>
         </ScrollView>
 
-        <ImageButton 
+        <ImageButton
+            AbsoluteLayout.LayoutBounds="16, 60, 15, 15"
+            AbsoluteLayout.LayoutFlags="None"
             Clicked="OnNavegationGoBack"
-            Source="goback.svg"
             HeightRequest="15"
-            WidthRequest="15"
-            VerticalOptions="Start"
             HorizontalOptions="Start"
-            AbsoluteLayout.LayoutBounds="16, 60, 15, 15" 
-            AbsoluteLayout.LayoutFlags="None" />
+            Source="goback.svg"
+            VerticalOptions="Start"
+            WidthRequest="15" />
     </AbsoluteLayout>
 </ContentPage>

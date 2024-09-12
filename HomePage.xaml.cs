@@ -14,6 +14,16 @@ namespace appLogin
         {
             InitializeComponent();
             _databaseService = new DatabaseService();
+
+            // Carregar todos os usuários no início (opcional)
+            CarregarUsuarios();
+        }
+
+        // Função para carregar todos os usuários na CollectionView
+        private async void CarregarUsuarios()
+        {
+            var todosUsuarios = await _databaseService.ObterTodosDadosAsync();
+            userList.ItemsSource = todosUsuarios;
         }
 
         private async void OnSearchClicked(object sender, EventArgs e)
@@ -29,15 +39,15 @@ namespace appLogin
             // Implementar a lógica de pesquisa aqui
             List<Tabela> resultados = await _databaseService.ObterDadosPorEmailAsync(searchText);
 
-            // Exemplo: Mostrar os resultados em um alerta (substitua com o seu código de exibição)
+            // Exibe os resultados na CollectionView
             if (resultados.Any())
             {
-                string resultadosStr = string.Join(", ", resultados.Select(r => r.Email));
-                await DisplayAlert("Resultados", $"Usuários encontrados: {resultadosStr}", "OK");
+                userList.ItemsSource = resultados; // Exibe os usuários encontrados
             }
             else
             {
                 await DisplayAlert("Resultado", "Nenhum usuário encontrado.", "OK");
+                userList.ItemsSource = null; // Limpa a lista se não houver resultados
             }
         }
     }

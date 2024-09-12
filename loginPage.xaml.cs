@@ -1,12 +1,26 @@
 using Microsoft.Maui.Controls;
+using System;
+using System.Threading.Tasks;
 
 namespace appLogin
 {
     public partial class loginPage : ContentPage
     {
+        private IDatabaseService _databaseService;
+
+        // Construtor padrão
         public loginPage()
         {
             InitializeComponent();
+            // Instância padrão, você pode injetar o serviço depois
+            _databaseService = DependencyService.Get<IDatabaseService>();
+        }
+
+        // Construtor com injeção de dependência
+        public loginPage(IDatabaseService databaseService)
+        {
+            InitializeComponent();
+            _databaseService = databaseService;
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
@@ -20,8 +34,7 @@ namespace appLogin
                 return;
             }
 
-            var databaseService = new DatabaseService();
-            bool sucesso = await databaseService.LoginAsync(email, senha);
+            bool sucesso = await _databaseService.LoginAsync(email, senha);
 
             if (sucesso)
             {

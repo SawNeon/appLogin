@@ -14,9 +14,7 @@ namespace appLogin
         public DatabaseService()
         {
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "app.db");
-
             _database = new SQLiteAsyncConnection(dbPath);
-
             _database.CreateTableAsync<Tabela>().Wait();
         }
 
@@ -47,16 +45,19 @@ namespace appLogin
 
         public async Task<List<Tabela>> ObterDadosPorEmailAsync(string email)
         {
-            // Garante que a query está correta
             return await _database.Table<Tabela>()
                                   .Where(t => t.Email == email)
                                   .ToListAsync();
         }
+
+        public async Task<List<Tabela>> ObterTodosDadosAsync()
+        {
+            return await _database.Table<Tabela>().ToListAsync();
+        }
+
         public async Task<bool> LoginAsync(string email, string senha)
         {
-        
             var user = await _database.Table<Tabela>().Where(t => t.Email == email && t.Senha == senha).FirstOrDefaultAsync();
-
             return user != null;
         }
     }
