@@ -3,60 +3,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appLogin.HomePage"
              Title="Usuários">
+    <AbsoluteLayout BackgroundColor="grey">
+        <VerticalStackLayout BackgroundColor="grey">
+            <Label 
+                 Margin="0,50,180,30"
+                 Text="Procurar"
+                 FontSize="36"
+                 VerticalOptions="Fill"
+                 HorizontalOptions="CenterAndExpand" />
 
-    <VerticalStackLayout BackgroundColor="grey">
-        <Label 
-             Margin="0,50,180,30"
-             Text="Procurar"
-             FontSize="36"
-             VerticalOptions="Fill"
-             HorizontalOptions="CenterAndExpand" />
+            <Frame
+                Margin="5"
+                Padding="0"
+                BorderColor="Gray"
+                CornerRadius="5"
+                HasShadow="True"
+                VerticalOptions="Center">
+                <HorizontalStackLayout>
+                    <ImageButton
+                        Margin="5"
+                        Source="search.svg"
+                        HeightRequest="30"
+                        WidthRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Clicked="OnSearchClicked" />
 
-        <Frame
-            Margin="5"
-            Padding="0"
-            BorderColor="Gray"
-            CornerRadius="5"
-            HasShadow="True"
-            VerticalOptions="Center">
-            <HorizontalStackLayout>
-                <ImageButton
-                    Margin="5"
-                    Source="search.svg"
-                    HeightRequest="30"
-                    WidthRequest="30"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Clicked="OnSearchClicked" />
+                    <Entry x:Name="search"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Pesquisar"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="300" />
+                </HorizontalStackLayout>
+            </Frame>
 
-                <Entry x:Name="search"
-                    HeightRequest="52"
-                    HorizontalOptions="FillAndExpand"
-                    Placeholder="Pesquisar"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="300" />
-            </HorizontalStackLayout>
-        </Frame>
+            <!-- CollectionView para exibir a lista de usuários -->
+            <Frame
+                Margin="5,15,5,5"
+                Padding="5"
+                BorderColor="Gray"
+                CornerRadius="5"
+                HasShadow="True"
+                VerticalOptions="FillAndExpand">
 
-        <!-- CollectionView para exibir a lista de usuários -->
-        <Frame
-            Margin="5,15,5,5"
-            Padding="5"
-            BorderColor="Gray"
-            CornerRadius="5"
-            HasShadow="True"
-            VerticalOptions="FillAndExpand">
+                <CollectionView x:Name="userList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="5">
+                                <Label Text="{Binding Email}" FontSize="18" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
 
-            <CollectionView x:Name="userList">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="5">
-                            <Label Text="{Binding Email}" FontSize="18" />
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Frame>
+        </VerticalStackLayout>
 
-    </VerticalStackLayout>
+        <ImageButton
+            AbsoluteLayout.LayoutBounds="280, 55"
+            AbsoluteLayout.LayoutFlags="None"
+            Clicked="OnNavegationGoAddPage"
+            HeightRequest="60"
+            WidthRequest="60"
+            HorizontalOptions="Start"
+            Source="addbutton.svg"
+            VerticalOptions="Start"
+             />
+
+    </AbsoluteLayout>
 </ContentPage>

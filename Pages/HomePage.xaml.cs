@@ -44,5 +44,10 @@ namespace appLogin
                 userList.ItemsSource = null; // Limpa a lista se não houver resultados
             }
         }
+
+        private async void OnNavegationGoAddPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("///AddPage");
+        }
     }
 }

@@ -69,6 +69,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Comfortaa.ttf" />
 	  <None Remove="Resources\Fonts\Roboto.ttf" />
+	  <None Remove="Resources\Images\addbutton.svg" />
 	  <None Remove="Resources\Images\goback.svg" />
 	  <None Remove="Resources\Images\iconLogin.svg" />
 	  <None Remove="Resources\Images\search.svg" />
@@ -84,6 +85,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AddPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
