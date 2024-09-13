@@ -1,7 +1,3 @@
-using Microsoft.Maui.Controls;
-using System;
-using System.Threading.Tasks;
-
 namespace appLogin
 {
     public partial class loginPage : ContentPage
@@ -44,6 +40,9 @@ namespace appLogin
             {
                 await DisplayAlert("Erro", "Email ou senha incorretos.", "OK");
             }
+
+            emailEntry.Text = string.Empty;
+            senhaEntry.Text = string.Empty;
         }
 
         private async void OnRecuperarSenhaPage(object sender, EventArgs e)

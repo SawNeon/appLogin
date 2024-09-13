@@ -1,8 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-
 namespace appLogin
 {
     public partial class RecoverPage : ContentPage

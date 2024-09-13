@@ -1,8 +1,4 @@
-using System;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
 
 namespace appLogin
 {
