@@ -1,5 +1,6 @@
 ﻿using SQLite;
-using System.ComponentModel;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace appLogin
 {
@@ -7,9 +8,23 @@ namespace appLogin
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [MaxLength(100), NotNull ]
+
+        [NotNull]
         public string Email { get; set; }
-        [MaxLength(100), NotNull, PasswordPropertyText]
+
+        [NotNull]
         public string Senha { get; set; }
+
+        // Criptografa a senha usando PasswordHelper
+        public void EncryptPassword(string senha)
+        {
+            Senha = PasswordHelper.CriptografarSenha(senha);
+        }
+
+        // Método para verificar a senha
+        public bool VerificarSenha(string senha)
+        {
+            return Senha == PasswordHelper.CriptografarSenha(senha);
+        }
     }
 }

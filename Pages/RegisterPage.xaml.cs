@@ -29,10 +29,9 @@ namespace appLogin
         private async void OnAdicionarClicked(object sender, EventArgs e)
         {
             string email = emailEntry.Text;
-            string senha = senhaEntry.Text; 
-            string confirmarSenha = confirmarSenhaEntry.Text; 
+            string senha = senhaEntry.Text;
+            string confirmarSenha = confirmarSenhaEntry.Text;
 
-            // Verifica se os campos estão preenchidos
             if (string.IsNullOrWhiteSpace(email))
             {
                 await DisplayAlert("Erro", "O email não pode estar vazio.", "OK");
@@ -57,32 +56,31 @@ namespace appLogin
                 return;
             }
 
-            if(senha.Length < 12)
+            if (senha.Length < 12)
             {
                 await DisplayAlert("Erro", "Sua senha deve conter no mínimo 12 caracteres", "OK");
                 return;
             }
 
-            // Verifica se já existe um registro com o mesmo email
             var dadosExistentes = await _databaseService.ObterDadosPorEmailAsync(email);
 
-            // Protege contra o retorno nulo
             if (dadosExistentes != null && dadosExistentes.Any())
             {
                 await DisplayAlert("Erro", "Já existe um registro com esse email.", "OK");
                 return;
             }
 
-            // Cria o novo registro
-            var novoDado = new Tabela { Email = email, Senha = senha }; // Usa 'senha' corretamente
+            var novoDado = new Tabela { Email = email };
+            novoDado.EncryptPassword(senha); // Criptografa a senha antes de salvar
+
             await _databaseService.InserirDadoAsync(novoDado);
             await DisplayAlert("Sucesso", "Dado inserido com sucesso!", "OK");
 
-            // Limpa os campos de entrada
             emailEntry.Text = string.Empty;
             senhaEntry.Text = string.Empty;
-            confirmarSenhaEntry.Text = string.Empty; // Limpando o campo de confirmação de senha
+            confirmarSenhaEntry.Text = string.Empty;
         }
+
 
         private bool IsValidEmail(string email)
         {

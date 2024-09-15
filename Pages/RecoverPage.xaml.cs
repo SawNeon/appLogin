@@ -40,7 +40,6 @@ namespace appLogin
                 return;
             }
 
-           
             var dadosExistentes = await _databaseService.ObterDadosPorEmailRecuperarAsync(email);
 
             if (dadosExistentes == null || !dadosExistentes.Any())
@@ -49,20 +48,17 @@ namespace appLogin
                 return;
             }
 
-           
-            bool sucesso = await _databaseService.AtualizarSenhaAsync(email, novaSenha);
+            // Atualiza a senha para todos os registros encontrados
+            foreach (var user in dadosExistentes)
+            {
+                user.EncryptPassword(novaSenha); // Correto, chamado na instância do objeto
+                await _databaseService.AtualizarDadoAsync(user);
+            }
 
-            if (sucesso)
-            {
-                await DisplayAlert("Sucesso", "Sua senha foi atualizada com sucesso.", "OK");
-                await Shell.Current.GoToAsync("///MainPage"); 
-            }
-            else
-            {
-                await DisplayAlert("Erro", "Ocorreu um erro ao atualizar a senha.", "OK");
-            }
+            await DisplayAlert("Sucesso", "Sua senha foi atualizada com sucesso.", "OK");
+            await Shell.Current.GoToAsync("///MainPage");
         }
-        
+
         private async void OnNavegationGoBack(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("///loginPage"); 

@@ -27,34 +27,38 @@ namespace appLogin
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            var email = emailEntry.Text;
-            var senha = senhaEntry.Text;
+            string email = emailEntry.Text;
+            string senha = senhaEntry.Text;
 
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
+            if (string.IsNullOrWhiteSpace(email))
             {
-                await DisplayAlert("Erro", "Por favor, preencha todos os campos.", "OK");
+                await DisplayAlert("Erro", "O email não pode estar vazio.", "OK");
                 return;
             }
 
-            bool sucesso = await _databaseService.LoginAsync(email, senha);
-
-            if (sucesso)
+            if (string.IsNullOrWhiteSpace(senha))
             {
-                await Shell.Current.GoToAsync("///HomePage");
+                await DisplayAlert("Erro", "A senha não pode estar vazia.", "OK");
+                return;
             }
-            else
+
+            // Obter um único usuário pelo email
+            var usuarios = await _databaseService.ObterDadosPorEmailAsync(email);
+            var usuario = usuarios.FirstOrDefault(); // Pega o primeiro (ou único) usuário da lista
+
+            if (usuario == null || !usuario.VerificarSenha(senha))
             {
                 await DisplayAlert("Erro", "Email ou senha incorretos.", "OK");
+                return;
             }
 
-            emailEntry.Text = string.Empty;
-            senhaEntry.Text = string.Empty;
+            // Navegar para a próxima página
+            await Shell.Current.GoToAsync("//HomePage");
         }
 
         private async void OnRecuperarSenhaPage(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("///RecoverPage");
-
         }
 
         private async void OnNavegationGoBack(object sender, EventArgs e)
