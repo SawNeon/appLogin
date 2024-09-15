@@ -1,7 +1,6 @@
 ﻿using SQLite;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
 
@@ -28,7 +27,7 @@ namespace appLogin
             return await _database.Table<User>().ToListAsync();
         }
 
-        public async Task<User> ObterDadoPorIdAsync(int cpf)
+        public async Task<User> ObterDadoPorIdAsync(long cpf) // Ajuste para 'long'
         {
             return await _database.Table<User>().Where(u => u.CPF == cpf).FirstOrDefaultAsync();
         }

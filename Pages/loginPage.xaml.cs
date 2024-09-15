@@ -12,6 +12,12 @@ namespace appLogin
             _databaseService = DependencyService.Get<IDatabaseService>();
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MainPage");
+            return true;  // Impede o comportamento padrão do botão de voltar
+        }
+
         // Construtor com injeção de dependência
         public loginPage(IDatabaseService databaseService)
         {

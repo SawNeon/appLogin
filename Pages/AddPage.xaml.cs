@@ -1,21 +1,21 @@
 using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace appLogin
 {
     public partial class AddPage : ContentPage
     {
         private readonly IDatabaseServiceUser _databaseService;
-        private User _selectedUser;
 
         public AddPage()
         {
             InitializeComponent();
             _databaseService = new DatabaseServiceUser();
-            LoadUsers();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//HomePage");
+            return true;  // Impede o comportamento padrão do botão de voltar
         }
 
         private async void OnAddUserClicked(object sender, EventArgs e)
@@ -24,58 +24,43 @@ namespace appLogin
                 string.IsNullOrWhiteSpace(CPFEntryAdd.Text) ||
                 string.IsNullOrWhiteSpace(TellEntryAdd.Text))
             {
-                await DisplayAlert("Error", "Please fill in all fields", "OK");
+                await DisplayAlert("Erro", "Preencha todos os campos", "OK");
                 return;
             }
 
             if (!long.TryParse(CPFEntryAdd.Text, out long cpf))
             {
-                await DisplayAlert("Error", "Invalid CPF. Please enter a valid number.", "OK");
+                await DisplayAlert("Erro", "CPF inválido. Insira um número válido.", "OK");
                 return;
             }
 
-            var name = NameEntryAdd.Text;
-            var phone = TellEntryAdd.Text;
-
-            var user = new User { CPF = cpf, Name = name, Phone = phone };
-            await _databaseService.InserirDadoAsync(user);
-
-            NameEntryAdd.Text = string.Empty;
-            CPFEntryAdd.Text = string.Empty;
-            TellEntryAdd.Text = string.Empty;
-
-            await DisplayAlert("Success", "User added successfully!", "OK");
-            LoadUsers();
-        }
-
-        private async void LoadUsers()
-        {
-            var users = await _databaseService.ObterTodosDadosAsync();
-            UsersListView.ItemsSource = users;
-        }
-
-        private void OnUserTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item != null && e.Item is User user)
+            var user = new User
             {
-                if (_selectedUser == user)
-                {
-                    UserDetailsLayout.IsVisible = !UserDetailsLayout.IsVisible;
-                }
-                else
-                {
-                    _selectedUser = user;
-                    UserDetailsLayout.IsVisible = true;
-                    NameLabel.Text = user.Name;
-                    PhoneLabel.Text = user.Phone;
-                    CPFLabel.Text = user.CPF.ToString();
-                }
-            }
-        }
+                CPF = cpf,
+                Name = NameEntryAdd.Text,
+                Phone = TellEntryAdd.Text
+            };
 
-        private async void OnNavegationGoBack(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("///HomePage");
-        }
+            try
+            {
+                await _databaseService.InserirDadoAsync(user);
+                await DisplayAlert("Sucesso", "Pessoa adicionada com sucesso!", "OK");
+
+                NameEntryAdd.Text = string.Empty;
+                CPFEntryAdd.Text = string.Empty;
+                TellEntryAdd.Text = string.Empty;
+            }
+            catch (InvalidOperationException ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Ocorreu um erro ao adicionar a pessoa. Tente novamente.", "OK");
+                Console.WriteLine($"Erro: {ex.Message}");
+            }
+        } 
+
+       
     }
 }

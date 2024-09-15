@@ -23,13 +23,14 @@
                     CornerRadius="5"
                     HasShadow="True">
 
-                    <Entry x:Name="emailEntry"
+                    <Entry
+                        x:Name="emailEntry"
                         HeightRequest="52"
                         HorizontalOptions="Center"
                         Placeholder="Email adress"
+                        Text="{Binding Email}"
                         VerticalOptions="CenterAndExpand"
-                        WidthRequest="343"
-                        Text="{Binding Email}"/>
+                        WidthRequest="343" />
 
 
                 </Frame>
@@ -40,22 +41,23 @@
                     CornerRadius="5"
                     HasShadow="True">
 
-                    <Entry x:Name="senhaEntry"
+                    <Entry
+                        x:Name="senhaEntry"
                         HeightRequest="52"
                         HorizontalOptions="Center"
-                        Placeholder="Senha"
-                        VerticalOptions="CenterAndExpand"
-                        WidthRequest="343"
                         IsPassword="True"
-                        Text="{Binding Senha}"/>
+                        Placeholder="Senha"
+                        Text="{Binding Senha}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="343" />
                 </Frame>
 
                 <Button
                     x:Name="LoginL"
                     Margin="2,16"
+                    Clicked="OnLoginClicked"
                     HeightRequest="52"
                     HorizontalOptions="FillAndExpand"
-                    Clicked="OnLoginClicked"
                     Text="Log in"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="343" />
@@ -63,13 +65,13 @@
                 <Label
                     x:Name="RecoverSenhaLabel"
                     Margin="185,16,0,0"
+                    FontSize="16"
                     HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
                     Text="Recuperar senha"
                     TextColor="White"
-                    FontSize="16">  
+                    VerticalOptions="CenterAndExpand">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRecuperarSenhaPage"/>
+                        <TapGestureRecognizer Tapped="OnRecuperarSenhaPage" />
                     </Label.GestureRecognizers>
                 </Label>
             </VerticalStackLayout>

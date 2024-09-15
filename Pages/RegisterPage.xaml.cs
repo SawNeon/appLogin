@@ -13,6 +13,12 @@ namespace appLogin
             _databaseService = DependencyService.Get<IDatabaseService>(); // Obtém a instância do serviço
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MainPage");
+            return true;  // Impede o comportamento padrão do botão de voltar
+        }
+
         // Construtor com parâmetros
         public RegisterPage(IDatabaseService databaseService)
         {

@@ -11,7 +11,12 @@ namespace appLogin
             _databaseService = DependencyService.Get<IDatabaseService>();
         }
 
-        
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("//MainPage");
+            return true;  // Impede o comportamento padrão do botão de voltar
+        }
+
         private async void OnNewPassword(object sender, EventArgs e)
         {
             string email = emailRecover.Text?.Trim();

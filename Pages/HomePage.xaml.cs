@@ -1,53 +1,38 @@
+using Microsoft.Maui.Controls;
+
 namespace appLogin
 {
     public partial class HomePage : ContentPage
     {
-        private readonly DatabaseService _databaseService;
-
         public HomePage()
         {
             InitializeComponent();
-            _databaseService = new DatabaseService();
-
-            // Carregar todos os usuários no início (opcional)
-            CarregarUsuarios();
         }
 
-        // Função para carregar todos os usuários na CollectionView
-        private async void CarregarUsuarios()
+        protected override bool OnBackButtonPressed()
         {
-            var todosUsuarios = await _databaseService.ObterTodosDadosAsync();
-            userList.ItemsSource = todosUsuarios;
+            // Exibe um alerta perguntando se o usuário deseja sair do app
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                bool result = await DisplayAlert("Sair", "Deseja voltar para tela de Login?", "Sim", "Não");
+                if (result)
+                {
+                    Shell.Current.GoToAsync("//loginPage");
+                }
+            });
+
+            // Retorna true para impedir o comportamento padrão de minimizar o app
+            return true;
         }
 
-        private async void OnSearchClicked(object sender, EventArgs e)
+        private async void OnAddPersonClicked(object sender, EventArgs e)
         {
-            string searchText = search.Text?.Trim();
-
-            if (string.IsNullOrEmpty(searchText))
-            {
-                await DisplayAlert("Erro", "Por favor, insira um texto para pesquisar.", "OK");
-                return;
-            }
-
-            // Implementar a lógica de pesquisa aqui
-            List<Tabela> resultados = await _databaseService.ObterDadosPorEmailAsync(searchText);
-
-            // Exibe os resultados na CollectionView
-            if (resultados.Any())
-            {
-                userList.ItemsSource = resultados; // Exibe os usuários encontrados
-            }
-            else
-            {
-                await DisplayAlert("Resultado", "Nenhum usuário encontrado.", "OK");
-                userList.ItemsSource = null; // Limpa a lista se não houver resultados
-            }
+            await Shell.Current.GoToAsync("//AddPage");
         }
 
-        private async void OnNavegationGoAddPage(object sender, EventArgs e)
+        private async void OnShowPersonListClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("///AddPage");
+            await Shell.Current.GoToAsync("//PersonListPage");
         }
     }
 }

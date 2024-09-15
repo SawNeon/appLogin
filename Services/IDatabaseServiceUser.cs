@@ -7,10 +7,10 @@ namespace appLogin
     {
         Task<int> InserirDadoAsync(User user);
         Task<List<User>> ObterTodosDadosAsync();
-        Task<User> ObterDadoPorIdAsync(int cpf);
+        Task<User> ObterDadoPorIdAsync(long cpf);  // Ajustado para long
         Task<int> AtualizarDadoAsync(User user);
         Task<int> DeletarDadoAsync(User user);
         Task<List<User>> ObterDadosPorNomeAsync(string name);
-        Task<bool> AtualizarTelefoneAsync(string cpf, string phone); 
+        Task<bool> AtualizarTelefoneAsync(string cpf, string phone);
     }
 }
