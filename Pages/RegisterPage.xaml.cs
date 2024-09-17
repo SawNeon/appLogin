@@ -74,7 +74,7 @@ namespace appLogin
             novoDado.EncryptPassword(senha); // Criptografa a senha antes de salvar
 
             await _databaseService.InserirDadoAsync(novoDado);
-            await DisplayAlert("Sucesso", "Dado inserido com sucesso!", "OK");
+            await DisplayAlert("Sucesso", "Usuário Cadastrado com sucesso!", "OK");
 
             emailEntry.Text = string.Empty;
             senhaEntry.Text = string.Empty;
