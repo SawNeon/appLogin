@@ -1,5 +1,6 @@
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace appLogin
 {
@@ -12,7 +13,6 @@ namespace appLogin
         {
             InitializeComponent();
             _databaseService = new DatabaseServiceUser();
-            LoadUsers();
         }
 
         protected override bool OnBackButtonPressed()
@@ -21,10 +21,24 @@ namespace appLogin
             return true;  // Impede o comportamento padrão do botão de voltar
         }
 
-        private async void LoadUsers()
+        protected override async void OnAppearing()
         {
-            var users = await _databaseService.ObterTodosDadosAsync();
-            UsersListView.ItemsSource = new ObservableCollection<User>(users);
+            base.OnAppearing();
+            await LoadUsers();
+        }
+
+        private async Task LoadUsers()
+        {
+            try
+            {
+                var users = await _databaseService.ObterTodosDadosAsync();
+                UsersListView.ItemsSource = new ObservableCollection<User>(users);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Ocorreu um erro ao carregar os dados. Tente novamente.", "OK");
+                Console.WriteLine($"Erro: {ex.Message}");
+            }
         }
 
         private void OnUserTapped(object sender, ItemTappedEventArgs e)

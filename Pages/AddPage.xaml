@@ -5,27 +5,72 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="">
     <AbsoluteLayout BackgroundColor="grey">
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout>
             <Label
-                FontSize="36"
-                HorizontalOptions="Center"
-                Text="Adicionar Pessoa" />
-            <Frame Padding="5" BorderColor="Gray">
-                <Entry x:Name="NameEntryAdd" Placeholder="Nome" />
+            Margin="0,104,150,0"
+            FontSize="36"
+            HorizontalOptions="CenterAndExpand"
+            Text="Adicionar"
+            VerticalOptions="Fill" />
+
+            <Frame
+                Margin="5"
+                Padding="0"
+                BorderColor="Gray"
+                CornerRadius="5"
+                HasShadow="True">
+
+                <Entry
+                    x:Name="NameEntryAdd"
+                    HeightRequest="52"
+                    HorizontalOptions="Center"
+                    Placeholder="Nome"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343" />
             </Frame>
-            <Frame Padding="5" BorderColor="Gray">
+
+            <Frame
+                Margin="5"
+                Padding="0"
+                BorderColor="Gray"
+                CornerRadius="5"
+                HasShadow="True">
+
                 <Entry
                     x:Name="CPFEntryAdd"
+                    HeightRequest="52"
+                    HorizontalOptions="Center"
                     Keyboard="Numeric"
-                    Placeholder="CPF" />
+                    Placeholder="CPF"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343" />
             </Frame>
-            <Frame Padding="5" BorderColor="Gray">
+            <Frame
+                Margin="5"
+                Padding="0"
+                BorderColor="Gray"
+                CornerRadius="5"
+                HasShadow="True">
+
                 <Entry
                     x:Name="TellEntryAdd"
+                    HeightRequest="52"
+                    HorizontalOptions="Center"
                     Keyboard="Numeric"
-                    Placeholder="Telefone" />
+                    Placeholder="Telefone"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="343" />
             </Frame>
-            <Button Clicked="OnAddUserClicked" Text="Adicionar" />
+
+            <Button 
+                x:Name="ViwerUserButton"
+                Margin="2, 16"
+                Clicked="OnAddUserClicked" 
+                HeightRequest="52"
+                HorizontalOptions="FillAndExpand"
+                Text="Adicionar"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="343" />
         </VerticalStackLayout>
     </AbsoluteLayout>
 </ContentPage>

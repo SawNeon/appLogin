@@ -4,22 +4,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="">
-    <AbsoluteLayout BackgroundColor="grey">
-        <VerticalStackLayout Padding="10" Spacing="20">
-            <Label
-                FontSize="36"
-                HorizontalOptions="Center"
-                Text="Bem-vindo" />
 
-            <Button
-                Clicked="OnAddPersonClicked"
-                HorizontalOptions="FillAndExpand"
-                Text="Adicionar Pessoas" />
+    <VerticalStackLayout BackgroundColor="grey">
+        <Label
+            Margin="0,104,130,0"
+            FontSize="36"
+            HorizontalOptions="CenterAndExpand"
+            Text="Bem vindo!"
+            VerticalOptions="Fill" />
 
-            <Button
-                Clicked="OnShowPersonListClicked"
-                HorizontalOptions="FillAndExpand"
-                Text="Exibir Lista de Pessoas" />
-        </VerticalStackLayout>
-    </AbsoluteLayout>
+        <Button
+            x:Name="addUserButton"
+            Margin="2,16"
+            Clicked="OnAddPersonClicked"
+            HeightRequest="52"
+            HorizontalOptions="FillAndExpand"
+            Text="Adicionar usúario"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="343" />
+
+        <Button
+            x:Name="ViwerUserButton"
+            Margin="2, 0"
+            Clicked="OnShowPersonListClicked"
+            HeightRequest="52"
+            HorizontalOptions="FillAndExpand"
+            Text="Exibir Lista de Pessoas"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="343" />   
+    </VerticalStackLayout>
 </ContentPage>
