@@ -25,3 +25,6 @@ Para rodar o aplicativo localmente, siga os passos abaixo:
 
    ```bash
 https://github.com/SawNeon/appLogin.git
+
+1. **Baixe o APK""
+https://drive.google.com/file/d/1KGEU78xqNZnG7L9cInEl_3_Wkkfzp3S1/view?usp=sharing
