@@ -25,12 +25,12 @@
 
         <Button
             x:Name="ViwerUserButton"
-            Margin="2, 0"
+            Margin="2,0"
             Clicked="OnShowPersonListClicked"
             HeightRequest="52"
             HorizontalOptions="FillAndExpand"
             Text="Exibir Lista de Pessoas"
             VerticalOptions="CenterAndExpand"
-            WidthRequest="343" />   
+            WidthRequest="343" />
     </VerticalStackLayout>
 </ContentPage>

@@ -2,19 +2,21 @@
     x:Class="appLogin.PersonListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="">
+    Title=""
+    BackgroundColor="Grey">
 
     <StackLayout Padding="10" BackgroundColor="grey">
         <ListView x:Name="UsersListView" ItemTapped="OnUserTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Detail="{Binding Phone}" Text="{Binding Name}" />
+                    <TextCell Detail="{Binding Phone}" Text="{Binding Name}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
         <StackLayout
             x:Name="UserDetailsLayout"
+            Margin="5"
             Padding="10"
             IsVisible="False">
             <Label Text="Nome:" />
@@ -26,8 +28,18 @@
             <Label Text="CPF:" />
             <Entry x:Name="CPFEntry" />
 
-            <Button Text="Salvar" Clicked="OnSaveClicked" Margin="10"/>
-            <Button Text="Cancelar" Clicked="OnCancelClicked" Margin="10"/>
+            <Button
+                Margin="10"
+                Clicked="OnSaveClicked"
+                Text="Salvar" />
+            <Button
+                Margin="10"
+                Clicked="OnDeleteClicked"
+                Text="Deletar" />
+            <Button
+                Margin="10"
+                Clicked="OnCancelClicked"
+                Text="Cancelar" />
         </StackLayout>
     </StackLayout>
 </ContentPage>
