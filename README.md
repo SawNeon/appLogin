@@ -9,11 +9,14 @@ O aplicativo de login foi projetado para fornecer uma interface básica onde os 
 - Tela de login com campos de usuário e senha.
 - Validação simples de entrada.
 - Feedback para o usuário em caso de login bem-sucedido ou falho.
+- Cadastro de Pessoas
+- Exibição de usuários com opções para editar e remover usuários
 
 ## Tecnologias Utilizadas
 
 - C#: MAUI
-- 
+- SQLITE
+  
 ## Configuração do Ambiente
 
 Para rodar o aplicativo localmente, siga os passos abaixo:
@@ -21,4 +24,4 @@ Para rodar o aplicativo localmente, siga os passos abaixo:
 1. **Clone o Repositório**
 
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+https://github.com/SawNeon/appLogin.git
