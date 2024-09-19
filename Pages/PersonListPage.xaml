@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="">
+
     <StackLayout Padding="10" BackgroundColor="grey">
         <ListView x:Name="UsersListView" ItemTapped="OnUserTapped">
             <ListView.ItemTemplate>
@@ -17,11 +18,16 @@
             Padding="10"
             IsVisible="False">
             <Label Text="Nome:" />
-            <Label x:Name="NameLabel" />
+            <Entry x:Name="NameEntry" />
+
             <Label Text="Telefone:" />
-            <Label x:Name="PhoneLabel" />
+            <Entry x:Name="PhoneEntry" />
+
             <Label Text="CPF:" />
-            <Label x:Name="CPFLabel" />
+            <Entry x:Name="CPFEntry" />
+
+            <Button Text="Salvar" Clicked="OnSaveClicked" Margin="10"/>
+            <Button Text="Cancelar" Clicked="OnCancelClicked" Margin="10"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

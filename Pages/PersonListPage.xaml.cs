@@ -47,10 +47,42 @@ namespace appLogin
             {
                 _selectedUser = user;
                 UserDetailsLayout.IsVisible = true;
-                NameLabel.Text = user.Name;
-                PhoneLabel.Text = user.Phone;
-                CPFLabel.Text = user.CPF.ToString();
+                NameEntry.Text = user.Name;
+                PhoneEntry.Text = user.Phone;
+                CPFEntry.Text = user.CPF.ToString();
             }
         }
+
+        private async void OnSaveClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_selectedUser != null)
+                {
+                    // Atualiza os dados do usuário com os valores dos campos de entrada
+                    _selectedUser.Name = NameEntry.Text;
+                    _selectedUser.Phone = PhoneEntry.Text;
+                    _selectedUser.CPF = long.Parse(CPFEntry.Text); // Certifique-se de que CPF é do tipo long
+
+                    // Chama o serviço para atualizar o usuário no banco de dados
+                    await _databaseService.AtualizarDadoAsync(_selectedUser);
+
+                    // Esconde o layout de detalhes e recarrega a lista de usuários
+                    UserDetailsLayout.IsVisible = false;
+                    await LoadUsers();
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Ocorreu um erro ao salvar os dados. Tente novamente.", "OK");
+                Console.WriteLine($"Erro ao salvar: {ex.Message}");
+            }
+        }
+        private void OnCancelClicked(object sender, EventArgs e)
+        {
+            // Esconde o layout de detalhes sem salvar as alterações
+            UserDetailsLayout.IsVisible = false;
+        }
+
     }
 }
